@@ -359,7 +359,7 @@ int GMT_mbcontour_parse(struct GMT_CTRL *GMT, struct MBCONTOUR_CTRL *Ctrl, struc
 		switch (opt->option) {
 		case '<': /* Input file (only one or three is accepted) */
 			Ctrl->I.active = true;
-#if GMT_MINOR_VERSION == 1 && GMT_RELEASE_VERSION < 2
+#if GMT_MAJOR_VERSION == 5 && GMT_MINOR_VERSION == 1 && GMT_RELEASE_VERSION < 2
 			if (gmt_check_filearg(GMT, '<', opt->arg, GMT_IN)) {
 #else
 			if (gmt_check_filearg(GMT, '<', opt->arg, GMT_IN, GMT_IS_DATASET)) {
@@ -533,7 +533,7 @@ int GMT_mbcontour_parse(struct GMT_CTRL *GMT, struct MBCONTOUR_CTRL *Ctrl, struc
 		}
 	}
 
-#if GMT_MAJOR_VERSION == 5 && GMT_MINOR_VERSION > 3
+#if GMT_MAJOR_VERSION == 6 || (GMT_MAJOR_VERSION == 5 && GMT_MINOR_VERSION > 3)
 	n_errors += gmt_M_check_condition(GMT, !GMT->common.R.active[RSET], "Syntax error: Must specify -R option\n");
 #else
 	n_errors += gmt_M_check_condition(GMT, !GMT->common.R.active, "Syntax error: Must specify -R option\n");
